@@ -7,10 +7,6 @@ public class Patient {
         ID = UUID.randomUUID();
     }
 
-    public static Patient addPatient() {
-        return new Patient();
-    }
-
     public UUID getID() {
         return ID;
     }

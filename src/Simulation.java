@@ -1,15 +1,14 @@
 import java.util.Random;
 public class Simulation {
-    //Setup
-    public void setup(){
-        System.out.println("Setting up Simulation...");
-    }
-
     public static Random rng = new Random();
     private int currentTime;
     private int totalTime;
-
-    private Hospital hos;
+    private Hospital SimHospital;
+    //Setup
+    public void setup(){
+        System.out.println("Setting up Simulation...");
+        SimHospital = new Hospital("parameters.csv");
+    }
 
     public Simulation() {
         currentTime = 0;
@@ -21,7 +20,7 @@ public class Simulation {
     }
 
     public Hospital getHospital() {
-        return hos;
+        return SimHospital;
     }
 
     //Run

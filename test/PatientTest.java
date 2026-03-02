@@ -15,13 +15,4 @@ class PatientTest {
         Patient p2 = new Patient();
         assertNotEquals(p1.getID(), p2.getID());
     }
-
-    @Test
-    void TestAddPatient() {
-        Patient p1 = Patient.addPatient();
-
-        assertNotNull(p1);
-        assertNotNull(p1.getID());
-    }
-
 }
