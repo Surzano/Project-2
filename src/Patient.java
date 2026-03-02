@@ -1,8 +1,22 @@
+import java.util.UUID;
+
 public class Patient {
-    int[] birthYear = new int[3]; // [ month ; day ; year ]
-    String name;
+    private UUID ID;
 
-    public Patient(String name){
-
+    public Patient() {
+        ID = UUID.randomUUID();
     }
+
+    public static Patient addPatient() {
+        return new Patient();
+    }
+
+    public UUID getID() {
+        return ID;
+    }
+
+    public String toString(){
+        return "Patient ID: " + ID.toString();
+    }
+
 }
