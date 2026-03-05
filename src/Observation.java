@@ -1,5 +1,7 @@
 public abstract class Observation {
     private int time;
     abstract boolean critical();
-    abstract protected void setTime();
+    protected final void setTime(int t){
+        time = t;
+    }
 }
