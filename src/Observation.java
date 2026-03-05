@@ -1,4 +1,4 @@
 public abstract class Observation {
-    abstract boolean dangeroud();
+    abstract boolean critical();
 
 }
