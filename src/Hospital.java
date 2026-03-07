@@ -21,18 +21,23 @@ public class Hospital {
         }
     }
 
-    public boolean addPatient(Patient ptn){
+    public boolean addPatient(Patient ptn) {
         int validSpot = 0;
 
-        for(int i = 0; i<patients.length; i++){
-            if(patients[i] == null){
+        for (int i = 0; i < patients.length; i++) {
+            if (patients[i] == null) {
                 validSpot = i;
             }
         }
 
         patients[validSpot] = ptn;
-
         return true;
     }
+    public void updateAlertData(int currentTime) {
+        for (int i = 0; i < patients.length; i++) {
+                patients[i].genAlerts(currentTime);
+        }
+    }
+
 
 }

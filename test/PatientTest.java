@@ -15,4 +15,10 @@ class PatientTest {
         Patient p2 = new Patient();
         assertNotEquals(p1.getID(), p2.getID());
     }
+
+    @Test
+    void testPatientGenAlerts() {
+        Patient p1 = Patient.CreatePatient();
+        assertDoesNotThrow(() -> p1.genAlerts(10));
+    }
 }
