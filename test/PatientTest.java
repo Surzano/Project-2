@@ -18,7 +18,7 @@ class PatientTest {
 
     @Test
     void testPatientGenAlerts() {
-        Patient p1 = Patient.CreatePatient();
+        Patient p1 = new Patient();
         assertDoesNotThrow(() -> p1.genAlerts(10));
     }
 }

@@ -33,6 +33,9 @@ public class Hospital {
         patients[validSpot] = ptn;
         return true;
     }
+
+    public Patient[] getPatients(){ return patients; }
+
     public void updateAlertData(int currentTime) {
         for (int i = 0; i < patients.length; i++) {
                 patients[i].genAlerts(currentTime);

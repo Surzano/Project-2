@@ -18,6 +18,7 @@ public class Simulation {
     public static int getRandomNumber(int bound){
         return rng.nextInt(bound);
     }
+    public static double getNextGaussian(double factor){ return  rng.nextGaussian() * factor; }
 
     public Hospital getHospital() {
         return SimHospital;
@@ -27,8 +28,11 @@ public class Simulation {
     public void run() {
         System.out.println("Runing Simulation..");
         while (currentTime < totalTime) {
+            Patient[] patients = SimHospital.getPatients();
+            for(int i = 0; i < patients.length; i++){
+                patients[i].genAlerts(currentTime);
+            }
             currentTime += 5;
-
         }
     }
 
