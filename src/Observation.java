@@ -4,4 +4,9 @@ public abstract class Observation {
     protected final void setTime(int t){
         time = t;
     }
+    public Observation() {
+
+    }
+
+    public abstract String data();
 }

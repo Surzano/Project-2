@@ -1,11 +1,20 @@
 public class HeartRate extends Observation{
+    private int bpm;
+
     public boolean critical() {
-        if (HeartRate < 40) or if (HeartRate > 75){
-            return alert();
+        if (bpm < 40 || bpm > 100) {
+            return true;
+        } else {
+            return false;
+
         }
     }
-    public HeartRate() {
+    public HeartRate(int bpm) {
+        this.bpm = bpm;
 
+    }
+    public String data() {
+        return " Heart Rate: " + bpm + "bpm";
     }
 
 }
