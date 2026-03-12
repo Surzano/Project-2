@@ -9,7 +9,7 @@ public class Temperature extends Observation{
     }
 
     public double toFarenheit(){
-        return temp * 9/5 + 32;
+        return Math.round((temp * 9/5 + 32)*100.0)/100.0;
     }
 
     public boolean critical(){
