@@ -11,6 +11,8 @@ public class Alert {
         this.severity = severity;
     }
 
+    public int getTime() {return timeAlert;}
+
     public String toString() {
         return "-ALERT- " + p + " [" + severity + "] Time: " + timeAlert + " (" + obs.data() + ")";
     }
