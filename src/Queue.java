@@ -23,8 +23,13 @@ public class Queue {
         return toReturn;
     }
 
-    public Alert peek(){ return head.alert; }
+    public Alert peek() {
+        if (head == null) {
+            return null;
+        }
 
+        return head.alert;
+    }
     public int count(){
         int count = 0;
         QueueRecord last = head;
