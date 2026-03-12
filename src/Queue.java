@@ -3,7 +3,7 @@ public class Queue {
 
     public void enqueue(Alert al){
         QueueRecord qr = new QueueRecord(al);
-        if(tail == null){
+        if(head == null){
             tail = qr;
             head = qr;
         } else {
@@ -13,13 +13,33 @@ public class Queue {
     }
 
     public Alert dequeue(){
+        Alert toReturn = null;
 
+        if(head != null){
+            toReturn = head.alert;
+            head = head.next;
+        }
+
+        return toReturn;
     }
 
     public Alert peek(){ return head.alert; }
 
     public int count(){
+        int count = 0;
+        QueueRecord last = head;
 
+        while(true){
+            if(last == null){break;}
+
+            count++;
+            if(last.next == null){
+                break;
+            }
+            last = last.next;
+        }
+
+        return count;
     }
 
     private class QueueRecord{
