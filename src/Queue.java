@@ -41,13 +41,8 @@ public class Queue {
         int count = 0;
         QueueRecord last = head;
 
-        while(true){
-            if(last == null){break;}
-
+        while(last != null){
             count++;
-            if(last.next == null){
-                break;
-            }
             last = last.next;
         }
 
