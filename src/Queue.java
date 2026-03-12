@@ -1,3 +1,5 @@
+import java.lang.reflect.GenericDeclaration;
+
 public class Queue {
     private QueueRecord head, tail;
 
@@ -18,6 +20,8 @@ public class Queue {
         if(head != null){
             toReturn = head.alert;
             head = head.next;
+            if(head == null){ tail = null; }
+            else if(head.next == null){ tail = head; }
         }
 
         return toReturn;
@@ -30,6 +34,7 @@ public class Queue {
 
         return head.alert;
     }
+
     public int count(){
         int count = 0;
         QueueRecord last = head;
