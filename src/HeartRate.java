@@ -3,12 +3,7 @@ public class HeartRate extends Observation{
     private int time;
 
     public boolean critical() {
-        if (bpm < 40 || bpm > 100) {
-            return true;
-        } else {
-            return false;
-
-        }
+        return bpm < 40 || bpm > 100;
     }
     public HeartRate(int bpm, int t) {
         this.bpm = bpm;

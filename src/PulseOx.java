@@ -8,11 +8,8 @@ public class PulseOx extends Observation {
     }
 
     public boolean critical() {
-        if (spo2 < 90) {
-            return true;
-        }else {
-            return false;
-        }
+        return spo2 < 90;
+
     }
 
     public String data() {

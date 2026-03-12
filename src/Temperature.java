@@ -13,11 +13,8 @@ public class Temperature extends Observation{
     }
 
     public boolean critical(){
-        if(temp >= 39.4 || temp <= 35){
-            return true;
-        }
+        return temp >= 39.4 || temp <= 35;
 
-        return false;
     }
     public String data() {
         return "Temperature: "+ temp + "°C ("+toFarenheit()+"°F) at time "+ time;

@@ -11,11 +11,7 @@ public class HeartPressure extends Observation {
     }
 
     public boolean critical(){
-        if(dystolic >= 130 || diastolic >= 80 || dystolic <= 90 || diastolic <= 60){
-            return true;
-        }
-
-        return false;
+        return dystolic >= 130 || diastolic >= 80 || dystolic <= 90 || diastolic <= 60;
     }
 
     public String data() {
