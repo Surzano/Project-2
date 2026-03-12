@@ -3,6 +3,8 @@ import java.lang.reflect.GenericDeclaration;
 public class Queue {
     private QueueRecord head, tail;
 
+    public Queue(){}
+
     public void enqueue(Alert al){
         QueueRecord qr = new QueueRecord(al);
         if(head == null){
