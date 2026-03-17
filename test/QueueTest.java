@@ -12,11 +12,11 @@ class QueueTest {
     @BeforeEach
     void set() {
         queue = new Queue();
-        Observation BadHR = new HeartRate(150);
-        Observation BadPulseOx = new PulseOx(60);
+        Observation BadHR = new HeartRate(150, 1);
+        Observation BadPulseOx = new PulseOx(60, 1);
 
-        alr1 = new Alert(BadPulseOx, 10, "not urgent");
-        alr2 = new Alert(BadHR, 12, "Urgent");
+        alr1 = new Alert(new Patient(),BadPulseOx, 10, "not urgent");
+        alr2 = new Alert(new Patient(), BadHR, 12, "Urgent");
     }
 
     @Test

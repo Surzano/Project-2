@@ -4,6 +4,7 @@ public class Patient {
     private UUID ID;
     private Devices[] dev = {new HRMonitor(), new PulseOxMonitor(), new TempMonitor(), new HPMonitor()};
     private int deviceCount;
+    private boolean gettingTreatedByNurse = false;
 
 
     public Patient() {
