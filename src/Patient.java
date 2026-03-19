@@ -5,10 +5,17 @@ public class Patient {
     private Devices[] dev = {new HRMonitor(), new PulseOxMonitor(), new TempMonitor(), new HPMonitor()};
     private int deviceCount;
     private boolean gettingTreatedByNurse = false;
+    private String name;
 
+
+    public Patient(String n) {
+        ID = UUID.randomUUID();
+        name = n;
+    }
 
     public Patient() {
         ID = UUID.randomUUID();
+        name = "NONAME";
     }
 
     public void genAlerts(int currentTime) {
@@ -18,7 +25,7 @@ public class Patient {
 
                 if (obs.critical()) {
                     Alert newAlert = new Alert(this, obs, currentTime, "Urgent");
-                    System.out.println("Patient " + ID + " generated an alert: " + newAlert.toString());
+                    System.out.println("Patient "+ name + "(" + ID + ") generated an alert: " + newAlert.toString());
                 }
             }
         }

@@ -2,7 +2,7 @@ import java.io.File;
 import java.util.Scanner;
 
 public class Hospital {
-    private Patient[] patients = new Patient[100];
+    private Patient[] patients = new Patient[10];
 
     public Hospital(String fileName){
         try {
@@ -13,7 +13,7 @@ public class Hospital {
                 String line = scan.nextLine();
 
                 String[] values = line.split(",");
-                addPatient(new Patient());
+                addPatient(new Patient(values[0]));
             }
 
         }catch(java.io.FileNotFoundException ex){
@@ -23,14 +23,20 @@ public class Hospital {
 
     public boolean addPatient(Patient ptn) {
         int validSpot = 0;
+        boolean foundSpot = false;
 
         for (int i = 0; i < patients.length; i++) {
             if (patients[i] == null) {
                 validSpot = i;
+                foundSpot = true;
+                break;
             }
         }
 
-        patients[validSpot] = ptn;
+        if(foundSpot) {
+            patients[validSpot] = ptn;
+        }
+
         return true;
     }
 
