@@ -2,7 +2,7 @@ import java.util.UUID;
 
 public class Patient {
     private UUID ID;
-    private Devices[] dev = {new HRMonitor(), new PulseOxMonitor(), new TempMonitor(), new HPMonitor()};
+    private Devices[] dev = {new HRMonitor(), new PulseOxMonitor(), new TempMonitor(), new BPMonitor()};
     private int deviceCount;
     private boolean gettingTreatedByNurse = false;
     private String name;
@@ -24,7 +24,7 @@ public class Patient {
                 Observation obs = dev[i].read(currentTime);
 
                 if (obs.critical()) {
-                    Alert newAlert = new Alert(this, obs, currentTime, "Urgent");
+                    Alert newAlert = new Alert(this, obs, currentTime, "Urgent", obs.sev);
                     System.out.println("Patient "+ name + "(" + ID + ") generated an alert: " + newAlert.toString());
                 }
             }

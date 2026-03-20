@@ -31,12 +31,12 @@ class ObservationTest {
 
     @Test
     void testHearPressureNormal(){
-        assertFalse(new HeartPressure(100, 70, 0).critical());
+        assertFalse(new BloodPressure(100, 70, 0).critical());
     }
 
     @Test
     void testHearPressureCritical(){
-        assertTrue(new HeartPressure(200, 130, 0).critical());
+        assertTrue(new BloodPressure(200, 130, 0).critical());
     }
 
     @Test

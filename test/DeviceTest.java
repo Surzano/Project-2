@@ -17,7 +17,7 @@ class DeviceTest {
 
     @Test
     void testHPMReadsObservation() {
-        HPMonitor hrm = new HPMonitor();
+        BPMonitor hrm = new BPMonitor();
         Observation obs = hrm.read(0);
         assertNotNull(obs, "Monitor should read Observation");
     }

@@ -4,6 +4,7 @@ public abstract class Observation {
     protected final void setTime(int t){
         time = t;
     }
+    private int sev;
     public Observation() {
 
     }

@@ -1,10 +1,10 @@
-public class HeartPressure extends Observation {
+public class BloodPressure extends Observation {
     private int HP;
     private int time;
     private int dystolic;
     private int diastolic;
 
-    public HeartPressure(int dy, int di, int  t){
+    public BloodPressure(int dy, int di, int  t){
         dystolic = dy;
         diastolic = di;
         time = t;
