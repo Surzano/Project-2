@@ -2,7 +2,7 @@ import java.io.File;
 import java.util.Scanner;
 
 public class Hospital {
-    private Patient[] patients = new Patient[10];
+    private Patient[] patients = new Patient[100];
 
     public Hospital(String fileName){
         try {

@@ -24,7 +24,7 @@ public class Patient {
                 Observation obs = dev[i].read(currentTime);
 
                 if (obs.critical()) {
-                    Alert newAlert = new Alert(this, obs, currentTime, "Urgent", obs.sev);
+                    Alert newAlert = new Alert(this, obs, currentTime, "Urgent", obs.getSeverity());
                     System.out.println("Patient "+ name + "(" + ID + ") generated an alert: " + newAlert.toString());
                 }
             }

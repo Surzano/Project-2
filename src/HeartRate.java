@@ -6,6 +6,7 @@ public class HeartRate extends Observation{
     public boolean critical() {
         return sev >= 1;
     }
+    public int getSeverity(){ return sev; }
 
     public HeartRate(int bpm, int t) {
         this.bpm = bpm;
@@ -22,6 +23,8 @@ public class HeartRate extends Observation{
         }
 
     }
+
+
     public String data() {
         return "Heart Rate: " + bpm + "bpm" + " at time "+ time;
     }

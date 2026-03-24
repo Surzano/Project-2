@@ -8,7 +8,7 @@ class AlertTest {
     void testAlertData() {
         Patient p1 = new Patient();
         Observation badHR = new HeartRate(150,0);
-        Alert alr = new Alert(p1, badHR, 15, "Urgent");
+        Alert alr = new Alert(p1, badHR, 15, "Urgent", 3);
 
         String alertOut = alr.toString();
 

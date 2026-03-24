@@ -36,9 +36,6 @@ public class Simulation {
         }
     }
 
-
-
-
     //Process
     public void process() {
         System.out.println("Processing data...");
