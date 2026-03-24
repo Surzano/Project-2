@@ -29,7 +29,7 @@ public class Nurse {
                 exp += nurses[i].getExperience();
             }
         }
-        return currentTime-workingOn.getTime() >= (workingOn.getDuration())/(Math.pow(.95, exp));
+        return currentTime-workingOn.getTime() >= (double)(workingOn.getDuration())/(Math.pow(.9, exp));
     }
     public Alert getWorkingOn(){
         return workingOn;
