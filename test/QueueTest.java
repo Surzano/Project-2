@@ -15,8 +15,8 @@ class QueueTest {
         Observation BadHR = new HeartRate(150, 1);
         Observation BadPulseOx = new PulseOx(60, 1);
 
-        alr1 = new Alert(new Patient(),BadPulseOx, 10, "not urgent");
-        alr2 = new Alert(new Patient(), BadHR, 12, "Urgent");
+        alr1 = new Alert(new Patient(),BadPulseOx, 10, "not urgent", 1);
+        alr2 = new Alert(new Patient(), BadHR, 12, "Urgent",1);
     }
 
     @Test
