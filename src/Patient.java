@@ -7,6 +7,7 @@ public class Patient {
     private int deviceCount;
     private boolean gettingTreatedByNurse = false;
     private String name;
+    private Hospital h;
 
 
     public Patient(String n) {
@@ -19,7 +20,7 @@ public class Patient {
         name = "NONAME";
     }
 
-    public void genAlerts(int currentTime) {
+    public void genAlerts(int currentTime, Hospital h) {
         for (int i = 0; i < dev.length; i++) {
             if (dev[i] != null) {
                 Observation obs = dev[i].read(currentTime);
@@ -27,6 +28,7 @@ public class Patient {
                 if (obs.critical() && Severities[i] < obs.getSeverity()) {
                     Alert newAlert = new Alert(this, obs, currentTime, "Urgent", obs.getSeverity());
                     Severities[i] = obs.getSeverity();
+                    h.recieveAlert(newAlert,obs);
                     System.out.println("Patient "+ name + "(" + ID + ") generated an alert: " + newAlert.toString());
                 }
             }
