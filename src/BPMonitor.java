@@ -14,7 +14,7 @@ public class BPMonitor extends Devices{
     private int last = Math.max(70, Math.min(Simulation.getRandomNumber(100), 100));
 
     public BPMonitor(){ // sets up condition for patient
-        if((Simulation.getRandomNumber(4) == 1)){
+        if((Simulation.getRandomNumber(7) == 1)){
             isGood = false;
         }
 

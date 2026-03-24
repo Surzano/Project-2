@@ -3,6 +3,7 @@ import java.util.UUID;
 public class Patient {
     private UUID ID;
     private Devices[] dev = {new HRMonitor(), new PulseOxMonitor(), new TempMonitor(), new BPMonitor()};
+    private int[] Severities = new int[dev.length];
     private int deviceCount;
     private boolean gettingTreatedByNurse = false;
     private String name;
@@ -23,8 +24,9 @@ public class Patient {
             if (dev[i] != null) {
                 Observation obs = dev[i].read(currentTime);
 
-                if (obs.critical()) {
+                if (obs.critical() && Severities[i] < obs.getSeverity()) {
                     Alert newAlert = new Alert(this, obs, currentTime, "Urgent", obs.getSeverity());
+                    Severities[i] = obs.getSeverity();
                     System.out.println("Patient "+ name + "(" + ID + ") generated an alert: " + newAlert.toString());
                 }
             }

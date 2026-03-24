@@ -3,7 +3,7 @@ class PulseOxMonitor extends Devices {
     private boolean isDecreasing = true, isGood = true;
 
     public PulseOxMonitor(){ // sets up condition for patient
-        if((Simulation.getRandomNumber(4) == 1)){
+        if((Simulation.getRandomNumber(6) == 1)){
             isGood = false;
         }
 

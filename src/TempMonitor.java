@@ -2,13 +2,14 @@ public class TempMonitor extends Devices {
     private double last = Math.min(Math.round(Math.min(41.0, 37.0 + Simulation.getNextGaussian(2))*100.0)/100.0, 36.5);
     private boolean isIncreasing = true, isGood = true;
 
+
     public Observation read(int t) {
         last = makeTemp();
         return new Temperature(last, t);
     }
 
     public TempMonitor(){ // sets up condition for patient
-        if((Simulation.getRandomNumber(4) == 1)){
+        if((Simulation.getRandomNumber(7) == 1)){
             isGood = false;
         }
 
