@@ -1,5 +1,4 @@
 public class BloodPressure extends Observation {
-    private int HP;
     private int time;
     private int dystolic;
     private int diastolic;

@@ -3,15 +3,10 @@ public class BPMonitor extends Devices{
     private boolean isIncreasing = false, isGood = true;
 
     public Observation read(int t){
-        int systolic = 90 + Simulation.getRandomNumber(31);   // 90–120
-        int diastolic = 60 + Simulation.getRandomNumber(21);
-
         lastSy = makeSystolic();
         lastDias = makeDiastolic();
         return new BloodPressure(lastSy, lastDias, t);
     }
-
-    private int last = Math.max(70, Math.min(Simulation.getRandomNumber(100), 100));
 
     public BPMonitor(){ // sets up condition for patient
         if((Simulation.getRandomNumber(7) == 1)){
@@ -23,16 +18,15 @@ public class BPMonitor extends Devices{
         }
     }
 
-
     private int makeSystolic(){
         int maxBound = 120, minBound = 90;
 
         if(!isGood){
             if(isIncreasing){
-                minBound = last + Simulation.getRandomNumber(10);
+                minBound = lastSy + Simulation.getRandomNumber(10);
                 maxBound = Integer.MAX_VALUE;
             }else {
-                maxBound = last;
+                maxBound = lastSy;
                 minBound = 70;
             }
         }
@@ -45,10 +39,10 @@ public class BPMonitor extends Devices{
 
         if(!isGood){
             if(isIncreasing){
-                minBound = last + Simulation.getRandomNumber(10);
+                minBound = lastDias + Simulation.getRandomNumber(10);
                 maxBound = Integer.MAX_VALUE;
             }else {
-                maxBound = last;
+                maxBound = lastDias;
                 minBound = 40;
             }
         }
