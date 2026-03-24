@@ -1,8 +1,9 @@
 public class Alert {
+    public int getEndTime;
     private Patient p;
     private Observation obs;
     private int timeAlert;
-    private int severity;
+    int severity;
     private String message;
     private boolean isBeingWorkedOn;
     private Nurse[] nursesWorking = new Nurse[100];
@@ -50,4 +51,7 @@ public class Alert {
         return "-ALERT- " + p + " [" + message + "] Time: " + timeAlert + " (" + obs.data() + ")";
     }
 
+    public int getSeverity() {
+        return severity;
+    }
 }

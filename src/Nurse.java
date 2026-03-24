@@ -13,6 +13,14 @@ public class Nurse {
 
     public int getExperience(){ return experienceLevel; }
 
+    public void clearTask() {
+        this.workingOn = null;
+    }
+
+    public boolean isFree() {
+        return workingOn == null;
+    }
+
     public boolean hasFinished(int currentTime){
         Nurse[] nurses = workingOn.getNursesWorking();
         int exp = 0;
@@ -22,5 +30,8 @@ public class Nurse {
             }
         }
         return currentTime-workingOn.getTime() >= (workingOn.getDuration())/(Math.pow(.95, exp));
+    }
+    public Alert getWorkingOn(){
+        return workingOn;
     }
 }
