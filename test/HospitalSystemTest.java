@@ -11,7 +11,7 @@ class HospitalSystemTest {
     @BeforeEach
     void setUp() {
 
-        hospital = new Hospital("parameters.csv");
+        hospital = new Hospital("parameters.csv", false);
         patient = new Patient("Test Patient");
     }
 

@@ -24,7 +24,6 @@ public class HeartRate extends Observation{
 
     }
 
-
     public String data() {
         return "Heart Rate: " + bpm + "bpm" + " at time "+ time;
     }

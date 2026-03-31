@@ -21,7 +21,7 @@ public class Nurse {
         return workingOn == null;
     }
 
-    public boolean hasFinished(int currentTime){
+    public boolean hasFinished(int currentTime, boolean telemedicine){
         Nurse[] nurses = workingOn.getNursesWorking();
         int exp = 0;
         for(int i = 0; i < nurses.length; i++){
@@ -29,7 +29,10 @@ public class Nurse {
                 exp += nurses[i].getExperience();
             }
         }
-        return currentTime-workingOn.getTime() >= (double)(workingOn.getDuration())/(Math.pow(.9, exp));
+
+        if(telemedicine){ exp += 5; }
+
+        return currentTime-workingOn.getTime() >= (double)(workingOn.getDuration())*(Math.pow(.95, exp));
     }
     public Alert getWorkingOn(){
         return workingOn;

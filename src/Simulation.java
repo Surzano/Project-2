@@ -9,9 +9,9 @@ public class Simulation {
     private int totalTime;
     private Hospital SimHospital;
     //Setup
-    public void setup(){
+    public void setup(boolean tele, int nrs){
         System.out.println("Setting up Simulation...");
-        SimHospital = new Hospital("parameters.csv");
+        SimHospital = new Hospital("parameters.csv", tele, nrs);
     }
 
     public Simulation() {
@@ -34,32 +34,46 @@ public class Simulation {
         while (currentTime < totalTime) {
             Patient[] patients = SimHospital.getPatients();
             for(Patient p : patients) p.genAlerts(currentTime, SimHospital);
+
             SimHospital.assignNurses();
 
+            boolean allWorking = false;
+
+            while(!allWorking) {
+               SimHospital.assignNursesOnWorkingAlerts();
+
+                for(Nurse n : SimHospital.getStaff()){
+                    if(n.isFree() && !SimHospital.areAlertsAvailable()){ allWorking = false; break;} else allWorking = true;
+                }
+            }
+
             for (Nurse n : SimHospital.getStaff()){
-                if (!n.isFree() && n.hasFinished(currentTime)){
+                if (!n.isFree() && n.hasFinished(currentTime, SimHospital.isTelemedicineAvailable())){
                     Alert Finished = n.getWorkingOn();
-                    Finished.getTime();
                     SimHospital.getCompleteQueue().enqueue(Finished);
                     n.clearTask();
+                    Finished.endAlert(currentTime);
                 }
             }
             for(int i = 0; i < patients.length; i++){
                 patients[i].genAlerts(currentTime, SimHospital );
             }
             currentTime += 1;
+
         }
     }
 
     //Process
     public void process() {
+        System.out.println("Processing data...");
+
         int count = 0;
         int totalTime = 0;
         int maxTime = 0;
 
         while (SimHospital.getCompleteQueue().peek() != null) {
             Alert al = SimHospital.getCompleteQueue().dequeue();
-            int resTime = al.getEndTime - al.getTime();
+            int resTime = al.getEndTime() - al.getTime();
             totalTime += resTime;
             if (resTime > maxTime) maxTime = resTime;
             count++;
@@ -68,9 +82,6 @@ public class Simulation {
             System.out.println("Average Resolution time: " + (double)totalTime / count);
             System.out.println("Max Resolution Time: " + maxTime);
         }
-
-
-        System.out.println("Processing data...");
     }
 
 }

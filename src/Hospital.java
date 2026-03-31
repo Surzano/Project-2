@@ -8,9 +8,11 @@ public class Hospital {
     private Queue completeQueue = new Queue();
     private Nurse[] staff;
     private Patient[] patientList;
+    private boolean telemedicine = false;
 
-    public Hospital(String fileName){
-        staff = new Nurse[15];
+    public Hospital(String fileName, boolean tele, int nrs){
+        telemedicine = tele;
+        staff = new Nurse[nrs];
         for(int i = 0; i < staff.length; i++) staff[i] = new Nurse();
 
         try {
@@ -66,6 +68,21 @@ public class Hospital {
         }
     }
 
+    public void assignNursesOnWorkingAlerts(){
+        for(Nurse working: staff) {
+            if(!working.isFree()) {
+                for (Nurse n : staff) {
+                    if (n.isFree()) {
+                        Alert toAssign = working.getWorkingOn();
+
+                        if (toAssign != null) n.giveTask(toAssign);
+                    }
+                }
+            }
+        }
+
+    }
+
     public Patient[] getPatients(){ return patients; }
 
     public void updateAlertData(int currentTime,Hospital h) {
@@ -80,4 +97,8 @@ public class Hospital {
     public Queue getCompleteQueue() {
         return completeQueue;
     }
+
+    public boolean areAlertsAvailable() { return urgentQueue.peek() == null && nonUrgentQueue.peek() == null;}
+
+    public boolean isTelemedicineAvailable(){ return telemedicine;}
 }
